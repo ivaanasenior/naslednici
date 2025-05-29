@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 205, 90%, 45%; /* Tamno plava */
+    --primary-hover: 205, 90%, 38%; /* Malo tamnija plava za hover */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 140, 60%, 45%; /* Zelena za akcente */
+    --accent-hover: 140, 60%, 38%; /* Malo tamnija zelena za hover */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 205, 90%, 45%; /* Ista kao primarna za fokus */
+    --radius: 0.5rem;
+  }
+
+  /* .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 205, 80%, 55%;
+    --primary-hover: 205, 80%, 48%; 
+    --primary-foreground: 0 0% 100%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 140, 70%, 55%;
+    --accent-hover: 140, 70%, 48%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 205, 80%, 55%;
+  } */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Stilovi za štampu */
+@media print {
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 10pt;
+    line-height: 1.2;
+    background-color: white !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
+    print-color-adjust: exact !important; /* Firefox */
+  }
+
+  .print-section {
+    display: block !important;
+    width: 100% !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  .print-hidden {
+    display: none !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 1.5cm; /* Standardne margine za A4 */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: black !important;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  table, th, td {
+    border: 1px solid black !important;
+    border-collapse: collapse !important;
+    color: black !important;
+  }
+  th, td {
+    padding: 4px 6px !important;
+  }
+  
+  .text-accent { /* Osigurava da naslovi u printu budu crni */
+    color: black !important;
+  }
+  .bg-accent\/5 {
+    background-color: transparent !important; /* Uklanja pozadinsku boju zaglavlja kartica */
+  }
+   .bg-secondary\/50, .bg-secondary\/20 {
+    background-color: #f0f0f0 !important; /* Neka svijetla pozadina za alternativne redove ako je potrebno */
+  }
+
+  .text-muted-foreground {
+    color: #333 !important;
+  }
+
+  .border-accent\/50, .border-primary\/30, .border-primary\/50 {
+    border-color: #ccc !important;
+  }
+  .shadow-md, .shadow {
+     box-shadow: none !important;
+  }
+}
