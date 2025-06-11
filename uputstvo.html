@@ -1,245 +1,118 @@
-
 <!DOCTYPE html>
 <html lang="sr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Uputstvo za Kalkulator Nasljedstva</title>
+    <title>Uputstvo za Korišćenje Kalkulatora Nasljedstva</title>
     <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-            line-height: 1.6;
-            margin: 0 auto;
-            max-width: 800px;
-            padding: 20px;
-            color: #333;
-            background-color: #f9f9f9;
-        }
-        header {
-            border-bottom: 2px solid #007bff;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        h1 {
-            color: #007bff;
-            font-size: 2em;
-        }
-        h2 {
-            color: #0056b3;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 5px;
-            margin-top: 30px;
-        }
-        h3 {
-            color: #333;
-            margin-top: 20px;
-        }
-        p, li {
-            margin-bottom: 10px;
-            font-size: 1.05em;
-        }
-        ul {
-            padding-left: 20px;
-        }
-        .highlight {
-            background-color: #e7f3ff;
-            padding: 2px 5px;
-            border-radius: 3px;
-            font-weight: bold;
-        }
-        .note {
-            background-color: #fff3cd;
-            border-left: 5px solid #ffeeba;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
-        }
-        .note strong {
-            color: #856404;
-        }
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            font-size: 0.9em;
-            color: #777;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        .print-only {
-            display: none;
-        }
-
-        @media print {
-            body {
-                font-family: 'Times New Roman', Times, serif;
-                font-size: 10pt;
-                background-color: white;
-                color: black;
-                max-width: 100%; /* Ensure full width for A4 */
-                margin: 1.5cm; /* A4 margins */
-            }
-            header, footer, .no-print {
-                display: none;
-            }
-            h1, h2, h3 {
-                color: black !important;
-                page-break-after: avoid;
-            }
-            .note {
-                border: 1px solid #ccc;
-                background-color: #f9f9f9 !important; /* Light gray for print if needed */
-                print-color-adjust: exact;
-                -webkit-print-color-adjust: exact;
-            }
-            .highlight {
-                background-color: transparent !important;
-                font-weight: bold;
-                border: none;
-                padding: 0;
-                print-color-adjust: exact;
-                -webkit-print-color-adjust: exact;
-            }
-             table, th, td {
-                border: 1px solid black !important;
-                font-size: 9pt;
-            }
-            th {
-                background-color: #eee !important;
-                print-color-adjust: exact;
-                -webkit-print-color-adjust: exact;
-            }
-            .print-only {
-                display: block;
-                text-align: center;
-                margin-bottom: 20px;
-                font-weight: bold;
-            }
-            @page {
-                size: A4;
-                margin: 1.5cm;
-            }
-        }
+        body { font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; line-height: 1.6; margin: 20px; max-width: 800px; margin-left: auto; margin-right: auto; color: #333; }
+        h1, h2, h3 { color: #1a73e8; }
+        h1 { text-align: center; border-bottom: 2px solid #1a73e8; padding-bottom: 10px; }
+        h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; margin-top: 30px; }
+        ul, ol { padding-left: 20px; }
+        li { margin-bottom: 10px; }
+        p { margin-bottom: 15px; }
+        .container { padding: 20px; border: 1px solid #e0e0e0; border-radius: 8px; background-color: #f9f9f9; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .important { color: #d9534f; font-weight: bold; border-left: 3px solid #d9534f; padding-left: 10px; background-color: #fcf2f2; padding-top: 5px; padding-bottom: 5px;}
+        .note { font-style: italic; color: #555; background-color: #eef; padding: 10px; border-left: 3px solid #77aaff; border-radius: 4px;}
+        code, .code-like { font-family: monospace; background-color: #eee; padding: 2px 4px; border-radius: 3px; color: #333; }
     </style>
 </head>
 <body>
-    <header>
+    <div class="container">
         <h1>Uputstvo za Korišćenje Kalkulatora Nasljedstva</h1>
-    </header>
 
-    <div class="print-only">Kalkulator Nasljedstva - Uputstvo</div>
-
-    <section>
         <h2>Uvod</h2>
-        <p>Ovaj kalkulator je dizajniran da pomogne u indikativnom izračunavanju zakonskih nasljednih dijelova prema važećim propisima Republike Srpske. Program uzima u obzir unesene nasljednike, njihove statuse (da li su živi, da li prihvataju nasljedstvo) i srodstvo sa ostaviocem, kao i pravila preraspodjele.</p>
-    </section>
+        <p>Ovaj kalkulator je dizajniran da vam pomogne da indikativno izračunate nasljedne dijelove prema zakonskim odredbama u Republici Srpskoj. Molimo vas da pažljivo pratite korake za unos podataka kako biste dobili što precizniji rezultat.</p>
+        <p class="important">Napomena: Ovaj kalkulator pruža samo informativne obračune i ne može zamijeniti zvanično pravno mišljenje ili odluku nadležnog organa. Podaci dobijeni korišćenjem ovog programa su isključivo indikativni.</p>
 
-    <section>
         <h2>Koraci za Korišćenje</h2>
         <ol>
             <li>
-                <h3>1. Podaci o Ostaviocu</h3>
-                <p>U polje <span class="highlight">Ime i prezime ostavioca</span> unesite puno ime i prezime osobe čije se nasljedstvo raspravlja. Ovo polje je obavezno.</p>
+                <h3>1. Unos Podataka o Ostaviocu</h3>
+                <p>U prvom dijelu forme (<span class="code-like">Podaci o ostaviocu</span>), unesite puno ime i prezime osobe čije se nasljedstvo dijeli.</p>
             </li>
             <li>
                 <h3>2. Unos Nasljednika</h3>
-                <p>Kliknite na dugme <span class="highlight">Dodaj Nasljednika</span> da biste otvorili formu za unos podataka o pojedinačnom nasljedniku.</p>
+                <p>U sekciji <span class="code-like">Nasljednici</span>:</p>
                 <ul>
-                    <li><strong>Ime Nasljednika:</strong> Unesite puno ime i prezime nasljednika.</li>
-                    <li><strong>Odnos prema Ostaviocu:</strong> Iz padajućeg menija izaberite srodstvo nasljednika sa ostaviocem (npr. Supružnik, Dijete, Roditelj, Djed/Baba, Pradjed/Prababa).</li>
-                    <li><strong>Da li je nasljednik živ?:</strong> Označite da li je nasljednik živ u trenutku smrti ostavioca.
+                    <li>Kliknite na dugme <span class="code-like">Dodaj Nasljednika</span>.</li>
+                    <li>Unesite ime i prezime nasljednika.</li>
+                    <li>Izaberite odnos nasljednika prema ostaviocu iz padajućeg menija. Dostupni odnosi uključuju:
                         <ul>
-                            <li>Ako nasljednik <strong>nije živ</strong>, a pripada srodnicima koji mogu imati potomke po pravu predstavljanja (djeca, roditelji, djedovi/babe, pradjedovi/prababe), nakon što sačuvate ovog nasljednika, pojaviće se ikonica <span class="highlight">plus (+)</span> pored njega. Klikom na tu ikonicu možete dodati njegove direktne potomke (djecu).</li>
-                            <li>Status "Da li se prihvata nasljedstva?" će automatski biti postavljen na "Ne" za preminule nasljednike.</li>
+                            <li>Supružnik</li>
+                            <li>Dijete</li>
+                            <li>Roditelj</li>
+                            <li>Djed (očeva strana)</li>
+                            <li>Baba (očeva strana)</li>
+                            <li>Djed (majcina strana)</li>
+                            <li>Baba (majcina strana)</li>
                         </ul>
                     </li>
-                    <li><strong>Da li se prihvata nasljedstva?:</strong> Označite da li se živi nasljednik prihvata nasljednog dijela.
-                        <ul>
-                            <li>Ako se živ nasljednik <strong>ne prihvata</strong>, njegov dio će biti raspoređen ostalim zakonskim nasljednicima prema zakonu.</li>
-                        </ul>
-                    </li>
-                    <li><strong>(Samo za Supružnika) Da li traži izdvajanje polovine?:</strong> Ova opcija se pojavljuje samo ako je nasljednik <span class="highlight">Supružnik</span>, ako je <span class="highlight">živ</span> i ako se <span class="highlight">prihvata nasljedstva</span>. Ako supružnik ovo zatraži, odmah dobija 1/2 ukupne imovine, a preostala polovina se dijeli među svim zakonskim nasljednicima (uključujući i supružnika) prema redoslijedu nasljeđivanja.</li>
-                    <li>Kliknite na <span class="highlight">Sačuvaj Nasljednika</span>.</li>
+                    <li>Označite da li je nasljednik živ.</li>
+                    <li>Označite da li se nasljednik prihvata nasljedstva (ova opcija je dostupna samo ako je nasljednik živ). Ako se živ nasljednik ne prihvata, njegov dio će biti preraspodijeljen ostalim zakonskim nasljednicima istog nasljednog reda.</li>
+                    <li>Ako je nasljednik supružnik, živ je i prihvata se nasljedstva, pojaviće se dodatna opcija <span class="code-like">Da li traži izdvajanje polovine?</span>. Ovo se odnosi na zahtjev za izdvajanje polovine zajednički stečene imovine u braku prije zakonskog nasljeđivanja ostatka.</li>
+                    <li>Kliknite na <span class="code-like">Sačuvaj Nasljednika</span>.</li>
                 </ul>
-                <p>Ponavljajte ovaj korak za svakog potencijalnog zakonskog nasljednika.</p>
-                <p><strong>Napomena o potomcima:</strong> Ako unosite potomka preminulog nasljednika (npr. unuka od preminulog sina), prvo unesite preminulog sina, označite da nije živ, sačuvajte ga, a zatim kliknite na ikonicu plus (+) pored njegovog imena da dodate unuka kao njegovog potomka.</p>
             </li>
             <li>
-                <h3>3. Preraspodjela Nasljednih Dijelova (Opciono)</h3>
-                <p>Nakon što su uneseni svi nasljednici, i nakon što ste barem jednom kliknuli na "Izračunaj Nasljedstvo" da se inicijalno izračunaju dijelovi, možete definisati pravila preraspodjele.</p>
-                <p>Ova sekcija omogućava da nasljednik (donator) koji je živ, prihvata nasljedstvo i ima nasljedni dio veći od nule, ustupi svoj dio drugim zakonskim nasljednicima (primaocima).</p>
+                <h3>3. Dodavanje Potomaka za Preminule Nasljednike (Pravo Predstavljanja)</h3>
+                <p>Ako je neki od unesenih nasljednika (koji po zakonu mogu imati potomke koji nasljeđuju po pravu predstavljanja, kao što su djeca ostavioca, roditelji ostavioca ili djedovi/babe) preminuo, pored njegovog imena pojaviće se ikona <span class="code-like" style="color: blue;">⊕</span> (plus krug).</p>
                 <ul>
-                    <li>Kliknite na <span class="highlight">Dodaj Pravilo Preraspodjele</span>.</li>
-                    <li><strong>Donator:</strong> Izaberite nasljednika koji ustupa svoj dio. Prikazaće se njegov inicijalni udio.</li>
-                    <li><strong>Primalac:</strong> Izaberite nasljednika koji prima dio. Donator i primalac ne mogu biti ista osoba. Jedan nasljednik ne može biti primalac ako je on već donator u nekom drugom pravilu.</li>
-                    <li><strong>Dio Donatorovog Udjela Koji Se Ustupa:</strong> Unesite razlomak (npr. "1/2", "1/3") koji predstavlja dio <strong>početnog udjela DONATORA</strong> koji se ustupa ovom primaocu.</li>
-                    <li><span class="highlight">Važno:</span> Da bi ustupanje bilo važeće, donator mora ustupiti <span class="highlight">cjelokupan svoj nasljedni dio</span>. To znači da zbir svih dijelova koje jedan donator ustupi različitim primaocima mora biti tačno 1/1 (ili 100%) njegovog početnog udjela. Program će vas upozoriti ako alokacija nije potpuna.</li>
-                    <li>Kliknite na <span class="highlight">Sačuvaj Pravilo</span>.</li>
+                    <li>Klikom na ovu ikonu otvara se prozor za unos podataka o potomku (djetetu) tog preminulog nasljednika.</li>
+                    <li>Unesite podatke za potomka na isti način kao i za glavne nasljednike.</li>
+                    <li>Ovaj proces se može ponavljati hijerarhijski (npr. ako je i potomak preminuo, a imao je svoje potomke).</li>
                 </ul>
+                <p class="note">Program automatski provjerava nasljedne redove: 1. Djeca/Supružnik; 2. Roditelji/Supružnik (i potomci roditelja - braća/sestre ostavioca, itd.); 3. Djedovi/Babe/Supružnik (i njihovi potomci - ujaci/stricevi/tetke ostavioca, itd.). Kalkulator ne obračunava nasljedstvo za četvrti i dalje nasljedne redove.</p>
             </li>
             <li>
-                <h3>4. Izračunavanje Nasljedstva</h3>
-                <p>Kada ste unijeli sve podatke, kliknite na dugme <span class="highlight">Izračunaj Nasljedstvo</span>. Program će prikazati tabelu sa nasljednim dijelovima za svakog nasljednika, svedenim na zajednički imenilac.</p>
-            </li>
-            <li>
-                <h3>5. Obračun Sudske Takse (Opciono)</h3>
-                <p>Nakon što su izračunati nasljedni dijelovi, pojaviće se diskretno pitanje "Želite li da izračunate i sudske takse za nasljednike?".</p>
+                <h3>4. Preraspodjela Nasljednih Dijelova (Opciono)</h3>
+                <p>Nakon što unesete sve nasljednike i izračunate inicijalne dijelove (klikom na <span class="code-like">Izračunaj Nasljedstvo</span>), možete koristiti sekciju <span class="code-like">Preraspodjela Nasljednih Dijelova</span>.</p>
                 <ul>
-                    <li>Ako kliknete na to, otvoriće se polje za unos <span class="highlight">Ukupan iznos sudske takse</span>.</li>
-                    <li>Unesite ukupan iznos i kliknite <span class="highlight">Obračunaj takse</span>.</li>
-                    <li>Program će prikazati iznos takse za svakog nasljednika srazmjerno njegovom nasljednom dijelu.</li>
+                    <li>Ova opcija omogućava da definišete kako jedan nasljednik (donator) ustupa dio svog već izračunatog nasljednog dijela drugom nasljedniku (primaocu).</li>
+                    <li>Donator mora biti živ, prihvatiti nasljedstvo, imati nasljedni dio veći od nule i ne smije biti primalac donacije od drugog nasljednika.</li>
+                    <li>Donator mora ustupiti <strong>cjelokupan</strong> svoj nasljedni dio (100% ili 1/1) jednom ili više primalaca da bi ustupanje bilo važeće. Zbir svih ustupljenih dijelova od strane jednog donatora mora biti tačno 1/1 njegovog početnog udjela.</li>
+                    <li>Unesite dio <em>početnog udjela donatora</em> koji se ustupa (npr. <span class="code-like">1/2</span> ako donator ustupa polovinu svog dijela).</li>
                 </ul>
             </li>
             <li>
-                <h3>6. Resetovanje Podataka</h3>
-                <p>Ako želite da počnete unos iz početka, kliknite na dugme <span class="highlight">Resetuj Sve Podatke</span>. Svi uneseni podaci o ostaviocu, nasljednicima i pravilima preraspodjele će biti obrisani.</p>
+                <h3>5. Izračunavanje Nasljedstva</h3>
+                <p>Nakon unosa svih relevantnih podataka, kliknite na dugme <span class="code-like">Izračunaj Nasljedstvo</span>.</p>
+                <p>Rezultati će biti prikazani u tabeli, sa nasljednim dijelovima svedenim na zajednički imenilac.</p>
             </li>
-             <li>
-                <h3>7. Štampanje Rezultata</h3>
-                <p>Nakon što su rezultati izračunati, možete kliknuti na dugme <span class="highlight">Odštampaj Rezultate</span> (<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-printer" style="display:inline-block; vertical-align:middle;"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect width="12" height="8" x="6" y="14"></rect></svg>). Ovo će otvoriti dijalog za štampu vašeg pregledača, formatiran za A4 papir, prikazujući samo tabelu sa rezultatima nasljedstva i relevantnu napomenu.</p>
+            <li>
+                <h3>6. Štampa Rezultata</h3>
+                <p>Ako želite da odštampate prikazane rezultate, kliknite na dugme <span class="code-like">Odštampaj Rezultate</span>. Ovo će formatirati stranicu za štampu, prikazujući samo tabelu sa rezultatima i relevantnim informacijama.</p>
+            </li>
+            <li>
+                <h3>7. Obračun Sudske Takse (Opciono)</h3>
+                <p>Nakon što su rezultati nasljedstva izračunati, pojaviće se opcija za obračun sudskih taksi.</p>
+                <ul>
+                    <li>Kliknite na dugme <span class="code-like">Želite li da izračunate i sudske takse za nasljednike?</span>.</li>
+                    <li>Unesite ukupan iznos sudske takse.</li>
+                    <li>Kliknite na <span class="code-like">Obračunaj takse</span>. Program će rasporediti ukupan iznos takse na nasljednike srazmjerno njihovim dobijenim nasljednim dijelovima.</li>
+                    <li>Iznosi taksi će biti prikazani u tabeli rezultata.</li>
+                </ul>
+            </li>
+            <li>
+                <h3>8. Resetovanje Podataka</h3>
+                <p>Ukoliko želite da obrišete sve unesene podatke i počnete iznova, kliknite na dugme <span class="code-like">Resetuj Sve Podatke</span>. Bićete upitani da potvrdite ovu akciju.</p>
             </li>
         </ol>
-    </section>
 
-    <section class="note">
-        <h3>Važna napomena</h3>
-        <p>Ovaj programčić je u testnoj fazi te pruža samo indikativne rezultate nasljeđivanja i ni na koji način ne garantuje tačnost dobijenih podataka. Takođe, on nije namijenjen za složene situacije: ustupanje ustupljenog dijela, nedostojnost nasljeđa, testamenti, nužni dio i sl.</p>
-    </section>
-
-    <section>
-        <h2>Nasljedni Redovi (Osnovno)</h2>
-        <p>Program uzima u obzir sledeće zakonske nasljedne redove (pojednostavljeno):</p>
+        <h2>Važne Napomene</h2>
         <ul>
-            <li><strong>Prvi nasljedni red:</strong> Djeca ostavioca i njegov supružnik. Nasljeđuju na jednake dijelove. Ako je neko od djece umrlo prije ostavioca, a ima svoje potomke, ti potomci nasljeđuju dio koji bi pripao tom djetetu (pravo predstavljanja).</li>
-            <li><strong>Drugi nasljedni red:</strong> Ako nema potomaka, nasljeđuju roditelji ostavioca i njegov supružnik. Roditelji dijele jednu polovinu, a supružnik dobija drugu polovinu. Ako nema supružnika, roditelji dijele sve. Ako je jedan roditelj umro, njegov dio nasljeđuju njegova djeca (braća/sestre ostavioca) ili njihovi potomci.</li>
-            <li><strong>Treći nasljedni red:</strong> Ako nema potomaka, roditelja (ili njihovih potomaka), ni supružnika, nasljeđuju djedovi i babe ostavioca (polovina lozi sa očeve strane, polovina lozi sa majčine strane). Pravo predstavljanja važi i za njihove potomke.</li>
-            <li><strong>Četvrti nasljedni red:</strong> Ako nema nasljednika iz prethodnih redova, nasljeđuju pradjedovi i prababe ostavioca, po sličnim principima podjele po lozama. Pravo predstavljanja važi i za njihove potomke.</li>
+            <li>Ovaj kalkulator je namijenjen za primjenu zakonskih odredbi o nasljeđivanju u Republici Srpskoj.</li>
+            <li>Logika kalkulatora uzima u obzir pravo predstavljanja i druge relevantne aspekte zakonskog nasljeđivanja za prva tri nasljedna reda.</li>
+            <li>U slučaju odricanja od nasljedstva, dio nasljednika koji se odriče se preraspodjeljuje ostalim nasljednicima istog nasljednog reda, srazmjerno njihovim dijelovima, kao da nasljednik koji se odriče nije ni postojao (osim ako zakon drugačije ne propisuje za specifične situacije).</li>
+            <li>Uvijek se konsultujte sa kvalifikovanim pravnikom za tačne informacije i savjete vezane za vaš konkretan slučaj.</li>
         </ul>
-    </section>
+        
+        <h2>Kontakt za Sugestije</h2>
+        <p>Ukoliko imate sugestije za poboljšanje programa, možete ih poslati na e-mail adresu navedenu u podnožju aplikacije.</p>
 
-    <footer>
-        <p>&copy; <span id="currentYear"></span> Osnovni sud u Foči. Sva prava (ne) zadržana.</p>
-        <p>Za sugestije i primjedbe: dragan.osfoca@gmail.com</p>
-    </footer>
-
-    <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-    </script>
+    </div>
 </body>
 </html>
-
 
     
